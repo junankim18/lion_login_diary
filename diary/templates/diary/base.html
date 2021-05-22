@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Junan's Diary</title>
+        <style>
+            body {
+                margin: 0;
+            }
+            .bgmain {
+                position: absolute;
+                width: 100%;
+                height: 200%;
+                min-height: 100vh;
+                margin: 0;
+                background: center / cover no-repeat url("/static/lion.jpg");
+                background-size: cover;
+
+                z-index: -1;
+                opacity: 0.25;
+            }
+            .main {
+                width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 15px;
+                border-radius: 10px;
+            }
+            button,
+            input,
+            #submit {
+                border: transparent;
+                background-color: #aaaaff;
+                margin: 5px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            button:hover {
+                background-color: #51517a;
+                color: white;
+            }
+            input:hover {
+                background-color: #51517a;
+                color: white;
+            }
+
+            #submit:hover {
+                background-color: #51517a;
+                color: white;
+            }
+            a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bgmain"></div>
+        <div class="main">
+            <h1>Junan's Diary</h1>
+            {% if user.is_authenticated %}
+            <h3>Welcome, {{user.nickname}}!</h3>
+            <a href="{% url 'account:logout' %}"><button>LOG-OUT</button></a>
+            {% else%}
+            <h3>Login and Create Your Own Diary</h3>
+            <a href="{% url 'account:login' %}"><button>LOG-IN</button></a>
+            <a href="{% url 'account:signup' %}"><button>SIGN-UP</button></a>
+            {% endif %} {% block content %} {% endblock content %}
+        </div>
+    </body>
+</html>

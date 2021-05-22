@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main">
+    <form action="{%url 'diary:diary_create' %} " method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3><label for="title">title</label></h3>
+        <input type="text" name="title" />
+        <h3><label for="content">content</label></h3>
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
+        <h3><label for="image">image</label></h3>
+        <input type="file" name="image" />
+        <br />
+        <input type="submit" value="SUBMIT" id="submit" />
+    </form>
+    <a href="{% url 'diary:diary_list' %}"><button>go to LIST</button></a>
+</div>
+{% endblock content %}

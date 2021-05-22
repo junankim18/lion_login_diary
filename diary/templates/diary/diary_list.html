@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main">
+    <h1>LIST</h1>
+    {% for diary in diaries %}
+    <a href="{% url 'diary:diary_detail' diary.id %}"><h3>title : {{diary.title}}</h3></a>
+    {% endfor %}
+    <a href="{% url 'diary:diary_main' %}"><button>go to COVER</button></a>
+    <a href="{% url 'diary:diary_create' %}"><button>Create New Diary</button></a>
+</div>
+{% endblock content %}
