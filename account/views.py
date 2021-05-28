@@ -21,14 +21,14 @@ def login_view(request):
                 'form': form,
                 'error': 'username or password is incorrect'
             }
-            return render(request, 'account/login.html', ctx)
+            return render(request, 'login.html', ctx)
 
     else:
         form = AuthenticationForm()
         ctx = {
             'form': form
         }
-        return render(request, 'account/login.html', ctx)
+        return render(request, 'login.html', ctx)
 
 
 def logout_view(request):
@@ -49,11 +49,11 @@ def signup_view(request):
                 'form': form,
                 'error': 'username or password is incorrect'
             }
-            return render(request, 'account/signup.html', ctx)
+            return render(request, 'signup.html', ctx)
 
     else:
         form = RegisterForm()
         ctx = {
             'form': form
         }
-        return render(request, 'account/signup.html', ctx)
+        return render(request, 'signup.html', ctx)

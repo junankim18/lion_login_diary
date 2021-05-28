@@ -9,3 +9,5 @@ urlpatterns = [
     path('', include('diary.urls')),
     path('account', include('account.urls')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'helpers.views.page_not_found'

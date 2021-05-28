@@ -11,7 +11,7 @@ def diary_main(request):
     ctx = {
         'num': num
     }
-    return render(request, 'diary/diary_main.html', ctx)
+    return render(request, 'diary_main.html', ctx)
 
 
 @login_required(login_url='/account/login/')
@@ -20,7 +20,7 @@ def diary_list(request):
     ctx = {
         'diaries': diaries,
     }
-    return render(request, 'diary/diary_list.html', ctx)
+    return render(request, 'diary_list.html', ctx)
 
 
 @login_required(login_url='/account/login/')
@@ -29,13 +29,13 @@ def diary_detail(request, pk):
     ctx = {
         'diary': diary
     }
-    return render(request, 'diary/diary_detail.html', ctx)
+    return render(request, 'diary_detail.html', ctx)
 
 
 @login_required(login_url='/account/login/')
 def diary_create(request):
     if request.method == 'GET':
-        return render(request, 'diary/diary_create.html')
+        return render(request, 'diary_create.html')
     else:
         new_diary = Diary()
         new_diary.title = request.POST['title']
@@ -52,7 +52,7 @@ def diary_create(request):
         ctx = {
             'diary': diary
         }
-        return render(request, 'diary/diary_detail.html', ctx)
+        return render(request, 'diary_detail.html', ctx)
 
 
 @login_required(login_url='/account/login/')
@@ -62,7 +62,7 @@ def diary_update(request, pk):
         ctx = {
             'diary': diary
         }
-        return render(request, 'diary/diary_update.html', ctx)
+        return render(request, 'diary_update.html', ctx)
     else:
         update_diary = Diary.objects.get(id=pk)
         update_diary.title = request.POST['title']
@@ -78,7 +78,7 @@ def diary_update(request, pk):
         ctx = {
             'diary': diary
         }
-        return render(request, 'diary/diary_detail.html', ctx)
+        return render(request, 'diary_detail.html', ctx)
 
 
 @login_required(login_url='/account/login/')
